@@ -1,25 +1,40 @@
+```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
+
+    <!-- Primary SEO -->
     <title>Sapling Consultancy Services | Global IT & Automation Consulting</title>
     <meta name="description" content="Sapling Consultancy Services delivers world-class IT consulting, industrial automation expertise, and global workforce solutions." />
     <meta name="author" content="Sapling Consultancy Services" />
 
+    <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:title" content="Sapling Consultancy Services" />
     <meta property="og:description" content="Global IT consulting, industrial automation, and workforce solutions." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="@/assets/og-image.jpg" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://yourdomain.com" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="@/assets/og-image.jpg" />
+    <meta name="twitter:title" content="Sapling Consultancy Services" />
+    <meta name="twitter:description" content="Global IT consulting, industrial automation, and workforce solutions." />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <!-- Favicon (optional) -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
 
   <body>
     <div id="root"></div>
+
+    <!-- React Entry -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+```
+
