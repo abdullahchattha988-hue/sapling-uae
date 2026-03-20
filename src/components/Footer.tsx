@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Mail, Linkedin, Globe, ArrowUpRight, ShieldCheck, ArrowRight } from "lucide-react";
-import logoImg from "@/assets/logo-3.png";
+import logoImg from "@/assets/logo-23.png";
 
 /* ─── Data ───────────────────────────────────────────── */
 const serviceLinks = [
