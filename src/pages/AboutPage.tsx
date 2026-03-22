@@ -39,33 +39,49 @@ const heroStats = [
   { value: "15+", label: "Technologies"        },
 ];
 
-/* ─── Value card ── JS hover for reliability ── */
+/* ─── Value card ── dark-green hover matching GlobalPage RegionCard ── */
 const ValueCard = ({ v, i }: { v: typeof values[0]; i: number }) => {
   const handleEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     const el      = e.currentTarget as HTMLElement;
     const shimmer = el.querySelector<HTMLElement>("[data-shimmer]")!;
     const rule    = el.querySelector<HTMLElement>("[data-rule]")!;
     const icon    = el.querySelector<HTMLElement>("[data-icon]")!;
-    el.style.borderColor = "rgba(109,190,46,0.42)";
-    el.style.transform   = "translateY(-4px)";
-    el.style.boxShadow   = "0 20px 50px -12px rgba(13,31,10,0.18)";
-    el.style.background  = "#ffffff";
+    const title   = el.querySelector<HTMLElement>("[data-title]")!;
+    const desc    = el.querySelector<HTMLElement>("[data-desc]")!;
+    const num     = el.querySelector<HTMLElement>("[data-num]")!;
+    const glow    = el.querySelector<HTMLElement>("[data-glow]")!;
+    el.style.background   = "linear-gradient(135deg, #0D1F0A 0%, #132B0F 100%)";
+    el.style.borderColor  = "rgba(109,190,46,0.42)";
+    el.style.transform    = "translateY(-4px)";
+    el.style.boxShadow    = "0 20px 50px -10px rgba(13,31,10,0.25)";
     shimmer.style.opacity = "1";
+    glow.style.opacity    = "1";
     rule.style.width      = "56px";
     icon.style.transform  = "scale(1.08)";
+    title.style.color     = "#ffffff";
+    desc.style.color      = "rgba(240,255,240,0.5)";
+    num.style.color       = "rgba(109,190,46,0.18)";
   };
   const handleLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     const el      = e.currentTarget as HTMLElement;
     const shimmer = el.querySelector<HTMLElement>("[data-shimmer]")!;
     const rule    = el.querySelector<HTMLElement>("[data-rule]")!;
     const icon    = el.querySelector<HTMLElement>("[data-icon]")!;
-    el.style.borderColor = "rgba(109,190,46,0.12)";
-    el.style.transform   = "translateY(0)";
-    el.style.boxShadow   = "0 2px 12px rgba(13,31,10,0.04)";
-    el.style.background  = "#fafdf8";
+    const title   = el.querySelector<HTMLElement>("[data-title]")!;
+    const desc    = el.querySelector<HTMLElement>("[data-desc]")!;
+    const num     = el.querySelector<HTMLElement>("[data-num]")!;
+    const glow    = el.querySelector<HTMLElement>("[data-glow]")!;
+    el.style.background   = "#fafdf8";
+    el.style.borderColor  = "rgba(109,190,46,0.12)";
+    el.style.transform    = "translateY(0)";
+    el.style.boxShadow    = "0 2px 12px rgba(13,31,10,0.04)";
     shimmer.style.opacity = "0";
+    glow.style.opacity    = "0";
     rule.style.width      = "28px";
     icon.style.transform  = "scale(1)";
+    title.style.color     = "#0D1F0A";
+    desc.style.color      = "rgba(13,31,10,0.52)";
+    num.style.color       = "rgba(109,190,46,0.1)";
   };
 
   return (
@@ -81,7 +97,7 @@ const ValueCard = ({ v, i }: { v: typeof values[0]; i: number }) => {
         background: "#fafdf8",
         border: "1px solid rgba(109,190,46,0.12)",
         boxShadow: "0 2px 12px rgba(13,31,10,0.04)",
-        transition: "background 0.3s, border-color 0.3s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s",
+        transition: "background 0.35s ease, border-color 0.3s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s",
       }}
     >
       {/* Shimmer line */}
@@ -89,9 +105,14 @@ const ValueCard = ({ v, i }: { v: typeof values[0]; i: number }) => {
         style={{ background: "linear-gradient(90deg, transparent, #6DBE2E, transparent)", opacity: 0, transition: "opacity 0.3s" }}
       />
 
+      {/* Ambient glow */}
+      <div data-glow className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(109,190,46,0.1) 0%, transparent 65%)", opacity: 0, transition: "opacity 0.35s" }}
+      />
+
       {/* Number — faint top right */}
-      <div className="absolute top-5 right-6"
-        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 600, color: "rgba(109,190,46,0.1)", lineHeight: 1 }}>
+      <div data-num className="absolute top-5 right-6"
+        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 600, color: "rgba(109,190,46,0.1)", lineHeight: 1, transition: "color 0.35s" }}>
         {v.number}
       </div>
 
@@ -106,11 +127,11 @@ const ValueCard = ({ v, i }: { v: typeof values[0]; i: number }) => {
         style={{ width: "28px", background: "linear-gradient(90deg, #6DBE2E, rgba(109,190,46,0.2))", transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }}
       />
 
-      <h3 className="mb-3"
-        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "22px", fontWeight: 600, color: "#0D1F0A", letterSpacing: "-0.01em" }}>
+      <h3 data-title className="mb-3"
+        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "22px", fontWeight: 600, color: "#0D1F0A", letterSpacing: "-0.01em", transition: "color 0.35s" }}>
         {v.title}
       </h3>
-      <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: "13.5px", fontWeight: 300, color: "rgba(13,31,10,0.52)", lineHeight: 1.78 }}>
+      <p data-desc style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: "13.5px", fontWeight: 300, color: "rgba(13,31,10,0.52)", lineHeight: 1.78, transition: "color 0.35s" }}>
         {v.desc}
       </p>
     </motion.div>
@@ -559,7 +580,6 @@ const AboutPage = () => (
       <div className="absolute inset-0 pointer-events-none"
         style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(109,190,46,0.05) 1px, transparent 0)", backgroundSize: "36px 36px" }}
       />
-      {/* Ambient blobs */}
       <div className="absolute top-0 right-0 pointer-events-none"
         style={{ width: "600px", height: "600px", background: "radial-gradient(ellipse, rgba(109,190,46,0.08) 0%, transparent 65%)", transform: "translate(25%, -25%)" }}
       />
@@ -584,7 +604,6 @@ const AboutPage = () => (
             <span style={{ color: "#6DBE2E" }}>With Us?</span>
           </h2>
 
-          {/* Green rule */}
           <div className="mx-auto mb-6 h-px w-16" style={{ background: "linear-gradient(90deg, rgba(109,190,46,0.3), #6DBE2E, rgba(109,190,46,0.3))" }} />
 
           <p className="mb-10 mx-auto max-w-xl"
