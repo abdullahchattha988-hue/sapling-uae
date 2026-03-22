@@ -337,82 +337,22 @@ const NavDropdown = ({ label, active, children }: DropdownProps) => {
 };
 
 /* ─── Desktop nav link ───────────────────────────────── */
-const NavLink = ({ to, active, children }: { to: string; active: boolean; children: React.ReactNode }) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      style={{ position: "relative" }}
-    >
-      <Link
-        to={to}
-        className="relative px-4 py-2 text-[13.5px] font-medium tracking-[0.03em] transition-colors duration-200 rounded-md flex items-center gap-1.5 outline-none"
-        style={{ color: active || hovered ? "#6DBE2E" : "rgba(240,255,240,0.82)" }}
-      >
-        {/* Pill background on hover */}
-        <AnimatePresence>
-          {(hovered || active) && (
-            <motion.span
-              key="pill"
-              className="absolute inset-0 rounded-md pointer-events-none"
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.92 }}
-              transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
-              style={{
-                background: active
-                  ? "rgba(109,190,46,0.12)"
-                  : "rgba(109,190,46,0.07)",
-                border: "1px solid rgba(109,190,46,0.18)",
-              }}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Content */}
-        <span className="relative flex items-center gap-1.5">
-          {children}
-        </span>
-
-        {/* Animated underline */}
-        <motion.span
-          className="absolute bottom-0.5 left-4 right-4 h-px pointer-events-none"
-          style={{ background: "linear-gradient(90deg, #6DBE2E, #8FD94A)" }}
-          initial={false}
-          animate={{ scaleX: active || hovered ? 1 : 0, opacity: active || hovered ? 1 : 0 }}
-          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-          // origin left via transformOrigin
-          // @ts-ignore
-          transformOrigin="left"
-        />
-      </Link>
-
-      {/* Green glow dot that appears under active/hovered link */}
-      <AnimatePresence>
-        {(hovered || active) && (
-          <motion.span
-            key="glow-dot"
-            className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
-            style={{
-              bottom: "-6px",
-              width: "4px",
-              height: "4px",
-              borderRadius: "50%",
-              background: "#6DBE2E",
-              boxShadow: "0 0 8px 2px rgba(109,190,46,0.6)",
-            }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          />
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-};
+const NavLink = ({ to, active, children }: { to: string; active: boolean; children: React.ReactNode }) => (
+  <Link
+    to={to}
+    className="relative px-4 py-2 text-[13.5px] font-medium tracking-[0.03em] transition-colors duration-200 group rounded-md flex items-center gap-1.5"
+    style={{ color: active ? "#6DBE2E" : "rgba(240,255,240,0.82)" }}
+  >
+    {children}
+    <span
+      className="absolute bottom-0.5 left-4 right-4 h-px transition-transform duration-300 origin-left group-hover:scale-x-100"
+      style={{
+        background: "linear-gradient(90deg, #6DBE2E, #8FD94A)",
+        transform: active ? "scaleX(1)" : "scaleX(0)",
+      }}
+    />
+  </Link>
+);
 
 /* ─── Main Navbar ────────────────────────────────────── */
 const Navbar = () => {
@@ -516,49 +456,30 @@ const Navbar = () => {
 
         {/* CTA button */}
         <div className="hidden lg:flex items-center">
-          <motion.div
-            whileHover={{ y: -2, scale: 1.03 }}
-            whileTap={{ y: 0, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+          <Link
+            to="/contact"
+            className="group relative inline-flex items-center gap-2 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.07em] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-px"
+            style={{
+              background: "linear-gradient(135deg, #7ACC35 0%, #6DBE2E 50%, #4FA020 100%)",
+              color: "#061409",
+              border: "1px solid rgba(143,217,74,0.5)",
+              boxShadow: "0 2px 20px rgba(109,190,46,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
+            }}
           >
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center gap-2 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.07em] rounded-lg overflow-hidden transition-all duration-300"
-              style={{
-                background: "linear-gradient(135deg, #7ACC35 0%, #6DBE2E 50%, #4FA020 100%)",
-                color: "#061409",
-                border: "1px solid rgba(143,217,74,0.5)",
-                boxShadow: "0 2px 20px rgba(109,190,46,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
-              }}
-            >
-              {/* Static shimmer */}
-              <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
-
-              {/* Hover: brighter glow sweep */}
-              <span
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%)",
-                  backgroundSize: "200% 100%",
-                }}
-              />
-
-              {/* Hover: stronger box-shadow via pseudo via outline trick */}
-              <span
-                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  boxShadow: "0 0 0 1px rgba(143,217,74,0.5), 0 6px 32px rgba(109,190,46,0.55)",
-                }}
-              />
-
-              <span className="relative">Contact Us</span>
-              <ArrowRight
-                size={14}
-                strokeWidth={2.5}
-                className="relative transition-transform duration-200 group-hover:translate-x-1"
-              />
-            </Link>
-          </motion.div>
+            {/* Shimmer on button */}
+            <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
+            {/* Hover glow pulse */}
+            <span
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.12) 0%, transparent 70%)" }}
+            />
+            Contact Us
+            <ArrowRight
+              size={14}
+              strokeWidth={2.5}
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            />
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
