@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import logoImg from "@/assets/logo-23.png";
+import logoImg from "@/assets/logo.24.png";
 
 /* ─── Theme tokens ───────────────────────────────────── */
 // Primary: Deep forest green  #0A2010
