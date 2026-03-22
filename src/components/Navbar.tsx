@@ -337,22 +337,28 @@ const NavDropdown = ({ label, active, children }: DropdownProps) => {
 };
 
 /* ─── Desktop nav link ───────────────────────────────── */
-const NavLink = ({ to, active, children }: { to: string; active: boolean; children: React.ReactNode }) => (
-  <Link
-    to={to}
-    className="relative px-4 py-2 text-[13.5px] font-medium tracking-[0.03em] transition-colors duration-200 group rounded-md flex items-center gap-1.5"
-    style={{ color: active ? "#6DBE2E" : "rgba(240,255,240,0.82)" }}
-  >
-    {children}
-    <span
-      className="absolute bottom-0.5 left-4 right-4 h-px transition-transform duration-300 origin-left group-hover:scale-x-100"
-      style={{
-        background: "linear-gradient(90deg, #6DBE2E, #8FD94A)",
-        transform: active ? "scaleX(1)" : "scaleX(0)",
-      }}
-    />
-  </Link>
-);
+const NavLink = ({ to, active, children }: { to: string; active: boolean; children: React.ReactNode }) => {
+  const [hovered, setHovered] = useState(false);
+  const show = active || hovered;
+  return (
+    <Link
+      to={to}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative px-4 py-2 text-[13.5px] font-medium tracking-[0.03em] transition-colors duration-200 rounded-md flex items-center gap-1.5"
+      style={{ color: show ? "#6DBE2E" : "rgba(240,255,240,0.82)" }}
+    >
+      {children}
+      <span
+        className="absolute bottom-0.5 left-4 right-4 h-px transition-transform duration-300 origin-left"
+        style={{
+          background: "linear-gradient(90deg, #6DBE2E, #8FD94A)",
+          transform: show ? "scaleX(1)" : "scaleX(0)",
+        }}
+      />
+    </Link>
+  );
+};
 
 /* ─── Main Navbar ────────────────────────────────────── */
 const Navbar = () => {
