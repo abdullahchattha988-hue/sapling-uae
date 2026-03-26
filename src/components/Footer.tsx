@@ -364,12 +364,12 @@ const Footer = () => (
                 <Mail size={12} strokeWidth={1.8} style={{ color: "#6DBE2E" }} />
               </div>
               <a
-                href="mailto:info@saplingconsultancy.com"
+                href="mailto:info@saplinguae.com"
                 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: "12.5px", fontWeight: 300, color: "rgba(240,255,240,0.28)", transition: "color 0.2s" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#6DBE2E"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(240,255,240,0.28)"; }}
               >
-                info@saplingconsultancy.com
+                info@saplinguae.com
               </a>
             </div>
 

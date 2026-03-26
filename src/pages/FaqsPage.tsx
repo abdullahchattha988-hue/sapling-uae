@@ -30,7 +30,7 @@ const faqCategories = [
       { q: "What engagement models do you offer?",         a: "We offer flexible models including staff augmentation, project-based delivery, managed services, and build-operate-transfer engagements." },
       { q: "How do you ensure quality in consulting?",     a: "We follow rigorous quality processes, use industry best practices, and maintain continuous improvement through client feedback and performance metrics." },
       { q: "Do you offer global payroll management?",      a: "Yes, we provide end-to-end multi-country payroll management including compliance, tax management, and employee benefits administration." },
-      { q: "How do I get started with Sapling?",            a: "Simply email info@Saplinguae.com or use our Contact page. Our team will schedule a discovery call to understand your needs and propose the right approach." },
+      { q: "How do I get started with Sapling?",            a: "Simply email info@saplinguae.com or use our Contact page. Our team will schedule a discovery call to understand your needs and propose the right approach." },
     ],
   },
 ];

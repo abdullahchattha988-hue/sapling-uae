@@ -155,8 +155,8 @@ const ContactPage = () => {
                 Whether you need IT consulting, industrial automation support, talent solutions, or any of our other services — we'd love to hear from you.
               </p>
 
-              <ContactRow icon={Mail}     label="Email Us"      value="info@Saplinguae.com"      href="mailto:info@Saplinguae.com" />
-              <ContactRow icon={Globe}    label="Visit Website" value="www.Saplinguae.com"        href="https://www.saplinguae.com" />
+              <ContactRow icon={Mail}     label="Email Us"      value="info@saplinguae.com"      href="mailto:info@saplinguae.com" />
+              <ContactRow icon={Globe}    label="Visit Website" value="www.saplinguae.com"        href="https://www.saplinguae.com" />
               <ContactRow icon={Linkedin} label="LinkedIn"      value="Sapling-Consultancy"      href="https://linkedin.com/company/Sapling-Consultancy" />
 
               {/* Address */}
