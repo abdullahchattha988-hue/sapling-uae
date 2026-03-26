@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How do I get started with Sapling?",
-    a: "Simply reach out via our Contact page or email info@saplingconsultancy.com. Our team will schedule a discovery call to understand your needs and propose the right approach.",
+    a: "Simply reach out via our Contact page or email info@saplinguae.com. Our team will schedule a discovery call to understand your needs and propose the right approach.",
     number: "06",
   },
 ];

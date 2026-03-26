@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 /* ── Data ─────────────────────────────────────────────── */
 const contactDetails = [
-  { icon: Mail,   label: "Email Us",      value: "info@saplingconsultancy.com",                                          href: "mailto:info@saplingconsultancy.com" },
+  { icon: Mail,   label: "Email Us",      value: "info@saplinguae.com",                                          href: "mailto:info@saplingconsultancy.com" },
   { icon: Globe,  label: "Visit Website", value: "www.saplinguae.com",                                           href: "https://www.saplingconsultancy.com" },
   { icon: MapPin, label: "Headquarters",  value: "Compass Building, Al Hamra Industrial Zone FZ, Ras Al Khaimah, UAE", href: "#" },
 ];
@@ -524,7 +524,7 @@ const ContactSection = () => (
 
               {/* Direct email pill */}
               <a
-                href="mailto:info@saplingconsultancy.com"
+                href="mailto:info@saplinguae.com"
                 className="group flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl transition-all duration-250"
                 style={{
                   background: "rgba(109,190,46,0.05)",
@@ -550,7 +550,7 @@ const ContactSection = () => (
                     color: "rgba(13,31,10,0.6)",
                   }}
                 >
-                  info@saplingconsultancy.com
+                  info@saplinguae.com
                 </span>
               </a>
 

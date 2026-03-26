@@ -33,7 +33,7 @@ const industryLinks = [
 const socials = [
   { icon: Linkedin, href: "https://linkedin.com/company/sapling-consultancy", label: "LinkedIn" },
   { icon: Globe,    href: "https://www.saplinguae.com",                label: "Website"  },
-  { icon: Mail,     href: "mailto:info@saplingconsultancy.com",                label: "Email"    },
+  { icon: Mail,     href: "mailto:info@saplinguae.com",                label: "Email"    },
 ];
 
 /* ─── Footer nav link ────────────────────────────────── */
