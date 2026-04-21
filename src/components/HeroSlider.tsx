@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.webp";
@@ -126,7 +126,6 @@ const HeroSlider = () => {
   }, []);
 
   const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo]);
-  const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo]);
 
   useEffect(() => {
     setProgress(0);
@@ -419,60 +418,6 @@ const HeroSlider = () => {
       <div className="absolute bottom-12 left-8 z-10 opacity-50 hidden lg:block">
         <CornerOrnament />
       </div>
-
-      {/* ── Left nav arrow ── */}
-      <button
-        onClick={prev}
-        aria-label="Previous slide"
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center transition-all duration-200"
-        style={{
-          width: 44, height: 44,
-          borderRadius: "50%",
-          background: "rgba(109,190,46,0.07)",
-          border: "1px solid rgba(109,190,46,0.2)",
-          backdropFilter: "blur(8px)",
-          color: "rgba(230,255,230,0.65)",
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.background = "rgba(109,190,46,0.2)";
-          (e.currentTarget as HTMLElement).style.borderColor = "rgba(109,190,46,0.5)";
-          (e.currentTarget as HTMLElement).style.color = "#8FD94A";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.background = "rgba(109,190,46,0.07)";
-          (e.currentTarget as HTMLElement).style.borderColor = "rgba(109,190,46,0.2)";
-          (e.currentTarget as HTMLElement).style.color = "rgba(230,255,230,0.65)";
-        }}
-      >
-        <ChevronLeft size={19} strokeWidth={1.8} />
-      </button>
-
-      {/* ── Right nav arrow ── */}
-      <button
-        onClick={next}
-        aria-label="Next slide"
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center transition-all duration-200"
-        style={{
-          width: 44, height: 44,
-          borderRadius: "50%",
-          background: "rgba(109,190,46,0.07)",
-          border: "1px solid rgba(109,190,46,0.2)",
-          backdropFilter: "blur(8px)",
-          color: "rgba(230,255,230,0.65)",
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.background = "rgba(109,190,46,0.2)";
-          (e.currentTarget as HTMLElement).style.borderColor = "rgba(109,190,46,0.5)";
-          (e.currentTarget as HTMLElement).style.color = "#8FD94A";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.background = "rgba(109,190,46,0.07)";
-          (e.currentTarget as HTMLElement).style.borderColor = "rgba(109,190,46,0.2)";
-          (e.currentTarget as HTMLElement).style.color = "rgba(230,255,230,0.65)";
-        }}
-      >
-        <ChevronRight size={19} strokeWidth={1.8} />
-      </button>
 
       {/* ── Bottom slide controls bar ── */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
