@@ -397,6 +397,17 @@ const Footer = () => (
 
           <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: "11px", fontWeight: 300, color: "rgba(240,255,240,0.16)", letterSpacing: "0.02em" }}>
             © {new Date().getFullYear()} Sapling Consultancy Services FZ-LLC. All rights reserved.
+            <span style={{ display: "inline-block", width: 3, height: 3, borderRadius: "50%", background: "rgba(109,190,46,0.38)", margin: "0 9px", verticalAlign: "middle" }} />
+            <a
+              href="https://www.webcoreuae.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(240,255,240,0.16)", transition: "color 0.2s" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#6DBE2E"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(240,255,240,0.16)"; }}
+            >
+              Website by WebCore UAE
+            </a>
           </p>
 
           <div className="hidden md:flex items-center gap-2.5">
